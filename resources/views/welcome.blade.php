@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+</head>
+
+<body class="font-sans antialiased text-black">
+    @if (Route::has('login'))
+    <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-purple-300 to-purple-700  text-white px-6 py-4 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo di kiri -->
+            <a href="{{ route('dashboard') }}">
+                <img src="{{ asset('images/sportcenter2.png') }}" alt="Logo Gundar" class="h-20 w-auto object-contain">
+            </a>
+
+            <!-- Login/Register di kanan -->
+            <nav class="flex items-center gap-4">
+                @auth
+                <a
+                    href="{{ url('/dashboard') }}"
+                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
+                    Dashboard
+                </a>
+                @else
+                <a
+                    href="{{ route('login') }}"
+                    class="rounded-md px-3 py-2 text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
+                    Log in
+                </a>
+
+                @if (Route::has('register'))
+                <a
+                    href="{{ route('register') }}"
+                    class="bg-pink-600 text-white p-2 rounded-md transition-all duration-500 ease-in-out hover:bg-pink-700 hover:scale-105 hover:opacity-90">
+                    Register
+                </a>
+                @endif
+                @endauth
+            </nav>
+        </div>
+    </header>
+    @endif
+    
+    <main class="min-h-screen bg-[url(../../public/images/olgar.png)] bg-cover bg-center pt-32 px-6">
+        
+
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white shadow p-6 mt-6 opacity-0 animate-fade-in-down">
+                <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">Selamat Datang di Sport Center</h2>
+                <p class="text-gray-600 text-center">Selamat datang di Sport Center Kampus, pusat
+                    kegiatan olahraga yang dirancang untuk mendukung gaya hidup sehat dan
+                    aktif bagi seluruh civitas akademika. Kami menyediakan berbagai fasilitas
+                    olahraga yang nyaman, modern, dan mudah diakses untuk menunjang aktivitas
+                    fisik serta meningkatkan semangat sportivitas. Sport Center ini hadir
+                    sebagai wadah untuk membangun kebersamaan, meningkatkan prestasi, dan
+                    menjaga kebugaran tubuh. Mari manfaatkan setiap fasilitas yang tersedia
+                    dengan bijak dan jadikan olahraga sebagai bagian dari rutinitas harian kita.
+                </p>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 max-w-6xl mx-auto mt-auto opacity-0 animate-fade-in">
+            <div class="bg-white p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">Jadwal Ketersediaan Lapangan</h2>
+                <p class="text-gray-600">
+                <ul>
+                    <li>Senin–Jumat: 09.00–20.00</li>
+                    <li>Sabtu: 08.00–17.00</li>
+                </ul>
+                </p>
+            </div>
+
+
+            <div class="bg-white p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">Tata Cara Penyewaan</h2>
+                <ol class="list-decimal text-gray-600 list-inside ">
+                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Login dengan akun mahasiswa</li>
+                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Pilih Lapangan</li>
+                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Upload file KRS yang sedang berjalan</li>
+                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Tunggu Konfirmasi</li>
+                </ol>
+            </div>
+
+        </div>
+    </main>
+
+
+
+</body>
+
+
+</html>
