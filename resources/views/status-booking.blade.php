@@ -20,14 +20,14 @@
                         <tbody>
                             @forelse($bookings as $booking)
                             <tr>
-                                <td class="px-4 py-2 border">{{ $booking->tanggal }}</td>
-                                <td class="px-4 py-2 border">{{ $booking->lapangan }}</td>
-                                <td class="px-4 py-2 border">{{ $booking->jam }}</td>
-                                <td class="px-4 py-2 border">{{ $booking->status }}</td>
+                                <td class="px-4 py-2 border text-center">{{ \Carbon\Carbon::parse($booking->tanggal)->format('d-m-Y') }}</td>
+                                <td class="px-4 py-2 border text-center">{{ $booking->lapangan }}</td>
+                                <td class="px-4 py-2 border text-center">{{ \Carbon\Carbon::parse($booking->jam)->format('H:i')}}</td>
+                                <td class="px-4 py-2 border text-center">{{ $booking->status }}</td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2" class="text-center py-2 text-gray-500">Belum ada data booking</td>
+                                    <td colspan="6" class="px-6 py-4 text-center text-gray-500">Belum ada booking</td>
                             </tr>
                             @endforelse
                         </tbody>

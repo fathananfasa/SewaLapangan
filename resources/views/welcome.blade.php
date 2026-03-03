@@ -18,7 +18,7 @@
 
 <body class="font-sans antialiased text-black">
     @if (Route::has('login'))
-    <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-purple-300 to-purple-700  text-white px-6 py-4 shadow-md">
+    <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-purple-500 to-indigo-600  text-white px-6 py-4 shadow-md">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <!-- Logo di kiri -->
             <a href="{{ route('dashboard') }}">
@@ -52,47 +52,48 @@
         </div>
     </header>
     @endif
-    
+
     <main class="min-h-screen bg-[url(../../public/images/olgar.png)] bg-cover bg-center pt-32 px-6">
-        
 
-        <div class="max-w-6xl mx-auto">
-            <div class="bg-white shadow p-6 mt-6 opacity-0 animate-fade-in-down">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">Selamat Datang di Sport Center</h2>
-                <p class="text-gray-600 text-center">Selamat datang di Sport Center Kampus, pusat
-                    kegiatan olahraga yang dirancang untuk mendukung gaya hidup sehat dan
-                    aktif bagi seluruh civitas akademika. Kami menyediakan berbagai fasilitas
-                    olahraga yang nyaman, modern, dan mudah diakses untuk menunjang aktivitas
-                    fisik serta meningkatkan semangat sportivitas. Sport Center ini hadir
-                    sebagai wadah untuk membangun kebersamaan, meningkatkan prestasi, dan
-                    menjaga kebugaran tubuh. Mari manfaatkan setiap fasilitas yang tersedia
-                    dengan bijak dan jadikan olahraga sebagai bagian dari rutinitas harian kita.
-                </p>
-            </div>
-        </div>
-        <div class="grid md:grid-cols-2 max-w-6xl mx-auto mt-auto opacity-0 animate-fade-in">
-            <div class="bg-white p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">Jadwal Ketersediaan Lapangan</h2>
-                <p class="text-gray-600">
-                <ul>
-                    <li>Senin–Jumat: 09.00–20.00</li>
-                    <li>Sabtu: 08.00–17.00</li>
-                </ul>
+
+        <div class="max-w-6xl mx-auto px-4 space-y-8">
+            <!-- Hero Section -->
+            <div class="bg-white shadow rounded-xl p-6 mt-6 opacity-0 animate-fade-in-down">
+                <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Selamat Datang di Sport Center</h2>
+                <p class="text-gray-600 text-justify sm:text-center leading-relaxed">
+                    Sport Center Kampus hadir untuk mendukung gaya hidup sehat dan aktif bagi seluruh civitas akademika.
+                    Kami menyediakan fasilitas olahraga yang modern, nyaman, dan mudah diakses.
+                    Jadikan olahraga bagian dari rutinitas harianmu untuk menjaga kebugaran, memperkuat semangat sportivitas, dan membangun kebersamaan.
+                    Manfaatkan semua fasilitas dengan bijak!
                 </p>
             </div>
 
+            <!-- Info Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 animate-fade-in">
+                <!-- Jadwal Ketersediaan -->
+                <div class="bg-white shadow rounded-xl p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 text-center md:text-left mb-4">Jadwal Ketersediaan Lapangan</h2>
+                    <ul class="text-gray-600 space-y-1 text-center md:text-left">
+                        <li><strong>Senin – Jumat:</strong> 09.00 – 20.00</li>
+                        <li><strong>Sabtu:</strong> 08.00 – 17.00</li>
+                        <li><strong>Minggu:</strong> Tutup</li>
+                    </ul>
+                </div>
 
-            <div class="bg-white p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">Tata Cara Penyewaan</h2>
-                <ol class="list-decimal text-gray-600 list-inside ">
-                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Login dengan akun mahasiswa</li>
-                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Pilih Lapangan</li>
-                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Upload file KRS yang sedang berjalan</li>
-                    <li class="hover:text-blue-600 hover:translate-x-1 transition duration-200">Tunggu Konfirmasi</li>
-                </ol>
+                <!-- Tata Cara Penyewaan -->
+                <div class="bg-white shadow rounded-xl p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 text-center md:text-left mb-4">Tata Cara Penyewaan</h2>
+                    <ol class="list-decimal text-gray-600 list-inside space-y-2 text-center md:text-left">
+                        <li class="hover:text-blue-600 transition duration-200">Login / buat akun</li>
+                        <li class="hover:text-blue-600 transition duration-200">Pilih jenis dan jadwal lapangan</li>
+                        <li class="hover:text-blue-600 transition duration-200">Upload file KRS yang aktif</li>
+                        <li class="hover:text-blue-600 transition duration-200">Tunggu konfirmasi dari admin</li>
+                        <li class="hover:text-blue-600 transition duration-200">Gunakan lapangan sesuai jadwal</li>
+                    </ol>
+                </div>
             </div>
-
         </div>
+
     </main>
 
 

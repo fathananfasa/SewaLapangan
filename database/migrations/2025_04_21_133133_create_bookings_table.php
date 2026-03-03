@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30);
-            $table->string('email');
-            $table->string('krs');
+            $table->string('name', 20);
+            $table->string('email', 100);
+            $table->string('krs', 60);
             $table->date('tanggal');
             $table->time('jam'); 
-            $table->string('lapangan'); 
+            $table->string('lapangan', 1); 
             $table->enum('status', ['menunggu', 'diterima', 'ditolak'])->default('menunggu');
             $table->timestamps();
         });

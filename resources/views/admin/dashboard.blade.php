@@ -13,13 +13,29 @@
 
                         {{-- Filter Form --}}
                         <form method="GET" action="{{ route('admin.dashboard') }}" class="mb-4 flex items-center gap-4">
+                            @php
+                            $bulanIndonesia = [
+                            1 => 'Januari',
+                            2 => 'Februari',
+                            3 => 'Maret',
+                            4 => 'April',
+                            5 => 'Mei',
+                            6 => 'Juni',
+                            7 => 'Juli',
+                            8 => 'Agustus',
+                            9 => 'September',
+                            10 => 'Oktober',
+                            11 => 'November',
+                            12 => 'Desember',
+                            ];
+                            @endphp
                             <div>
                                 <label for="bulan" class="block text-sm font-medium">Bulan:</label>
                                 <select name="bulan" id="bulan" class="border rounded px-2 py-1 w-32">
                                     <option value="">Semua</option>
                                     @for ($i = 1; $i <= 12; $i++)
                                         <option value="{{ $i }}" {{ request('bulan') == $i ? 'selected' : '' }}>
-                                        {{ DateTime::createFromFormat('!m', $i)->format('F') }}
+                                        {{ $bulanIndonesia[$i] }}
                                         </option>
                                         @endfor
                                 </select>
@@ -51,25 +67,25 @@
                         <table class="min-w-full bg-white border border-gray-200 text-sm text-left text-gray-700">
                             <thead class="bg-gray-100 border-b">
                                 <tr>
-                                    <th class="px-6 py-3 font-medium text-gray-900">Nama</th>
-                                    <th class="px-6 py-3 font-medium text-gray-900">KRS</th>
-                                    <th class="px-6 py-3 font-medium text-gray-900">Tanggal</th>
-                                    <th class="px-6 py-3 font-medium text-gray-900">Jam</th>
-                                    <th class="px-6 py-3 font-medium text-gray-900">Status</th>
-                                    <th class="px-6 py-3 font-medium text-gray-900">Aksi</th>
+                                    <th class="px-6 py-3 font-medium text-gray-900 text-center">Nama</th>
+                                    <th class="px-6 py-3 font-medium text-gray-900 text-center">KRS</th>
+                                    <th class="px-6 py-3 font-medium text-gray-900 text-center">Tanggal</th>
+                                    <th class="px-6 py-3 font-medium text-gray-900 text-center">Jam</th>
+                                    <th class="px-6 py-3 font-medium text-gray-900 text-center">Status</th>
+                                    <th class="px-6 py-3 font-medium text-gray-900 text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
                                 @forelse($dtBooking as $item)
                                 <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4">{{ $item->name }}</td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 text-center">{{ $item->name }}</td>
+                                    <td class="px-6 py-4 text-center">
                                         <a href="{{ asset('storage/' . $item->krs) }}" target="_blank" class="text-blue-600 hover:underline">Lihat KRS</a>
                                     </td>
-                                    <td class="px-6 py-4">{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
-                                    <td class="px-6 py-4">{{ $item->jam }}</td>
-                                    <td class="px-6 py-4 capitalize">{{ $item->status }}</td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 text-center">{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
+                                    <td class="px-6 py-4 text-center">{{ \Carbon\Carbon::parse($item->jam)->format('H:i')}}</td>
+                                    <td class="px-6 py-4 text-center capitalize">{{ $item->status }}</td>
+                                    <td class="px-6 py-4 text-center">
                                         @if(strtolower($item->status) === 'menunggu')
                                         <form method="POST" action="{{ route('admin.konfirmasi', $item->id) }}">
                                             @csrf
